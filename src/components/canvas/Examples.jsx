@@ -66,3 +66,30 @@ export function Dog(props) {
 
   return <primitive object={scene} {...props} />
 }
+
+export function Box(props) {
+  // This reference gives us direct access to the THREE.Mesh object
+  const ref = useRef()
+  // Hold state for hovered and clicked events
+  const [hovered, hover] = useState(false)
+  const [clicked, click] = useState(false)
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  //useFrame((state, d) => (ref.current.rotation.y += d - 0.01666))
+  useFrame(({ clock }) => {
+    ref.current.rotation.y = Math.sin(clock.getElapsedTime() / 2) / 1.75
+  })
+
+  // Return the view, these are regular Threejs elements expressed in JSX
+  return (
+    <mesh
+      {...props}
+      ref={ref}
+      scale={0.5}
+      onClick={(event) => click(!clicked)}
+      onPointerOver={(event) => (event.stopPropagation(), hover(true))}
+      onPointerOut={(event) => hover(false)}>
+      <boxGeometry args={[6.3, 8.8, 0.1]} />
+      <meshStandardMaterial color={hovered ? 'purple' : 'blue'} />
+    </mesh>
+  )
+}
