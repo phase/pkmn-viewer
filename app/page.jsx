@@ -79,19 +79,36 @@ export default function Page() {
             scroll along, resize, etc.
           </p>
         </div> */}
-        {/* third row */}
+        {/* third row
         <div className='relative h-48 w-full py-6 sm:w-1/2 md:my-12 md:mb-40'>
           <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>GLSL Card Shader</h2>
           <p className='mb-8 text-gray-600'>Texture is passed to fragment shader & vertex shader.</p>
         </div>
         <div className='relative my-12 h-96 w-full py-6 sm:w-1/2 md:mb-40'>
-          <Canvas camera={{ fov: 12, position: [0, 0, 3] }}>
+          <Canvas camera={{ fov: 10, position: [0, 0, 4] }}>
             <Suspense fallback={null}>
               <Card />
             </Suspense>
           </Canvas>
-        </div>
+        </div> */}
       </div>
+      <Canvas camera={{ fov: 10, position: [0, 0, 4] }}>
+        <Suspense fallback={null}>
+          <Card
+            artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG069-giratina_vstar.png"}
+            foilUrl={"https://cdn.malie.io/file/malie-io/art/foils/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG069-giratina_vstar-std.png"}
+          />
+        </Suspense>
+      </Canvas>
+      <Canvas camera={{ fov: 10, position: [0, 0, 4] }}>
+        <Suspense fallback={null}>
+          <Card
+            artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG070-arceus_vstar.png"}
+            foilUrl={"https://cdn.malie.io/file/malie-io/art/foils/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG070-arceus_vstar-std.png"}
+          />
+        </Suspense>
+      </Canvas>
+
     </>
   )
 }

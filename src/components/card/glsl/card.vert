@@ -1,25 +1,19 @@
 precision mediump float;
 
 varying vec2 vUv;
-varying float vWave;
-
+varying float bend;
+varying vec3 shared_pos;
 uniform float uTime;
 
 #pragma glslify: snoise3 = require(glsl-noise/simplex/3d);
 
-
 void main() {
   vUv = uv;
-
   vec3 pos = position;
-//  float noiseFreq = 2.0;
-//  float noiseAmp = 0.4;
-//  vec3 noisePos = vec3(pos.x * noiseFreq + uTime, pos.y, pos.z);
-  //pos.z += snoise3(noisePos) * noiseAmp;
-  pos.z = mix(pos.x / 2.0, -pos.x / 2.0, sin(uTime / 4.0));
-  //pos.z = pos.x;
-//  vWave = pos.z;
 
+  bend = sin(uTime) / 2.0;
+  shared_pos = pos;
+  pos.z = mix(pos.x, -pos.x, bend) / 2.0 + mix(-pos.y / 4.0, 0.0, bend);
 
   gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
 }
