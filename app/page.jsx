@@ -2,11 +2,13 @@
 
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import { Canvas } from "@react-three/fiber";
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
 const Dog = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Dog), { ssr: false })
 const Duck = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Duck), { ssr: false })
 const Box = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Box), { ssr: false })
+const Card = dynamic(() => import('@/components/card/CardShader').then((mod) => mod.Card), { ssr: false })
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
   loading: () => (
@@ -46,7 +48,7 @@ export default function Page() {
       </div>
 
       <div className='mx-auto flex w-full flex-col flex-wrap items-center p-12 md:flex-row  lg:w-4/5'>
-        {/* first row */}
+        {/* first row
         <div className='relative h-48 w-full py-6 sm:w-1/2 md:my-12 md:mb-40'>
           <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>Events are propagated</h2>
           <p className='mb-8 text-gray-600'>Drag, scroll, pinch, and rotate the canvas to explore the 3D scene.</p>
@@ -58,8 +60,8 @@ export default function Page() {
               <Common color={'lightpink'} />
             </Suspense>
           </View>
-        </div>
-        {/* second row */}
+        </div> */}
+        {/* second row
         <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
           <View orbit className='relative h-full animate-bounce sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
@@ -76,6 +78,18 @@ export default function Page() {
             have multiple views with a single, performant canvas. These views will follow their tracking elements,
             scroll along, resize, etc.
           </p>
+        </div> */}
+        {/* third row */}
+        <div className='relative h-48 w-full py-6 sm:w-1/2 md:my-12 md:mb-40'>
+          <h2 className='mb-3 text-3xl font-bold leading-none text-gray-800'>GLSL Card Shader</h2>
+          <p className='mb-8 text-gray-600'>Texture is passed to fragment shader & vertex shader.</p>
+        </div>
+        <div className='relative my-12 h-96 w-full py-6 sm:w-1/2 md:mb-40'>
+          <Canvas camera={{ fov: 12, position: [0, 0, 3] }}>
+            <Suspense fallback={null}>
+              <Card />
+            </Suspense>
+          </Canvas>
         </div>
       </div>
     </>
