@@ -93,8 +93,8 @@ export default function Page() {
         </div> */}
       </div>
       <div class="w-5/6 m-auto" >
-        <div class="flex flex-row m-auto" style={{ height: 20 + 'rem' }}>
-          <Canvas camera={{ fov: 6, position: [0, 0, 4] }}>
+        <div class="flex flex-row m-auto" >
+          <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
             <Suspense fallback={null}>
               <Card
                 artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG068-origin_forme_dialga_vstar.png"}
@@ -102,7 +102,7 @@ export default function Page() {
               />
             </Suspense>
           </Canvas>
-          <Canvas camera={{ fov: 6, position: [0, 0, 4] }}>
+          <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
             <Suspense fallback={null}>
               <Card
                 artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG070-arceus_vstar.png"}
@@ -110,7 +110,7 @@ export default function Page() {
               />
             </Suspense>
           </Canvas>
-          <Canvas camera={{ fov: 6, position: [0, 0, 4] }}>
+          <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
             <Suspense fallback={null}>
               <Card
                 artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG067-origin_forme_palkia_vstar.png"}
@@ -120,7 +120,7 @@ export default function Page() {
           </Canvas>
         </div>
         <div class="flex flex-row m-auto" style={{ height: 20 + 'rem' }}>
-          <Canvas camera={{ fov: 6, position: [0, 0, 4] }}>
+          <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
             <Suspense fallback={null}>
               <Card
                 artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG056-hisuian_zoroark_vstar.png"}
@@ -128,7 +128,7 @@ export default function Page() {
               />
             </Suspense>
           </Canvas>
-          <Canvas camera={{ fov: 6, position: [0, 0, 4] }}>
+          <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
             <Suspense fallback={null}>
               <Card
                 artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG069-giratina_vstar.png"}
@@ -136,7 +136,7 @@ export default function Page() {
               />
             </Suspense>
           </Canvas>
-          <Canvas camera={{ fov: 6, position: [0, 0, 4] }}>
+          <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
             <Suspense fallback={null}>
               <Card
                 artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG055-regigigas_vstar.png"}
@@ -146,6 +146,29 @@ export default function Page() {
           </Canvas>
         </div>
       </div>
+      <div class="w-5/6 m-auto">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+          <CanvasWithCard />
+          <CanvasWithCard />
+          <CanvasWithCard />
+          <CanvasWithCard />
+          <CanvasWithCard />
+          <CanvasWithCard />
+        </div>
+      </div>
     </>
   )
+}
+
+function CanvasWithCard() {
+  return <>
+    <Canvas camera={{ fov: 6, position: [0, 0, 4] }} style={{ height: 20 + 'rem' }}>
+      <Suspense fallback={null}>
+        <Card
+          artUrl={"https://cdn.malie.io/file/malie-io/art/cards/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG055-regigigas_vstar.png"}
+          foilUrl={"https://cdn.malie.io/file/malie-io/art/foils/png/en_US/SWSH/CZ-CRZ/en_US-CZ-GG055-regigigas_vstar-std.png"}
+        />
+      </Suspense>
+    </Canvas>
+  </>
 }
